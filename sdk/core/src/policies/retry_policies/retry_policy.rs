@@ -181,6 +181,10 @@ where
                         let retry_after = None;
                         (error, retry_after)
                     } else {
+                        debug!(
+                            "non-io error occurred when making request: {}",
+                            error
+                        );
                         return Err(
                             error.context("non-io error occurred which will not be retried")
                         );
